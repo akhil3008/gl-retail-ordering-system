@@ -79,12 +79,12 @@ def root():
     allProductsMassagedDetails = massageItemData(allProductDetails)
     categoryData = getCategoryDetails()
     if loggedIn:
-        # userProduct = userRecommendations()
-        # api_url = loadapi['recommendationServiceUrl']
-        # products = {"product_id": 202228337}
-        # response = requests.post(api_url, json=products)
-        # prod_json = response.json()
-        prod_json = {"Product_ids": [202228337, 2, 3, 4, 5]}
+        userProduct = userRecommendations()
+        api_url = loadapi['recommendationServiceUrl']
+        products = {"product_id": 202228337}
+        response = requests.post(api_url, json=products)
+        prod_json = response.json()
+        # prod_json = {"Product_ids": [202228337, 2, 3, 4, 5]}
 
         list = []
         for i in range(0, len(prod_json['Product_ids'])):
@@ -126,11 +126,11 @@ def productDescription():
     loggedIn, firstName, noOfItems = getLoginUserDetails()
     productid = request.args.get('productId')
     productDetailsByProductId = getProductDetails(productid)
-    # api_url = loadapi['recommendationServiceUrl']
-    # products = {"product_id": productid}
-    # response = requests.post(api_url, json=products)
-    # prod_json = response.json()
-    prod_json = {"Product_ids": [202228337, 2, 3, 4, 5]}
+    api_url = loadapi['recommendationServiceUrl']
+    products = {"product_id": productid}
+    response = requests.post(api_url, json=products)
+    prod_json = response.json()
+    # prod_json = {"Product_ids": [202228337, 2, 3, 4, 5]}
     list = []
     for i in range(0, len(prod_json['Product_ids'])):
         list.append(prod_json['Product_ids'][i])
@@ -154,19 +154,19 @@ def index():
         productDetailsByProductId = getProductDetailsByName(productName)
         print(productDetailsByProductId)
         print(type(productDetailsByProductId))
-        # id = productDetailsByProductId[0].productid
-        # api_url = loadapi['recommendationServiceUrl']
-        # products = {"product_id": id}
-        # response = requests.post(api_url, json=products)
-        # prod_json = response.json()
-        prod_json = {"Product_ids": [202228337, 2, 3, 4, 5]}
+        id = productDetailsByProductId[0].productid
+        api_url = loadapi['recommendationServiceUrl']
+        products = {"product_id": id}
+        response = requests.post(api_url, json=products)
+        prod_json = response.json()
+        # prod_json = {"Product_ids": [202228337, 2, 3, 4, 5]}
         list = []
         for i in range(0, len(prod_json['Product_ids'])):
             list.append(prod_json['Product_ids'][i])
 
         recommendedProducts = getRecommendedProducts(list)
         recommendedProductsMassagedDetails = massageItemData(recommendedProducts)
-        return render_template("productSearch.html", itemData=productDetailsByProductId, loggedIn=loggedIn,
+        return render_template("ProductSearch.html", itemData=productDetailsByProductId, loggedIn=loggedIn,
                                firstName=firstName, productCountinKartForGivenUser=noOfItems,
                                recommendedProducts=recommendedProductsMassagedDetails)
 
@@ -211,12 +211,12 @@ def cart():
         loggedIn, firstName, productCountinKartForGivenUser = getLoginUserDetails()
         cartdetails, totalsum, tax = getusercartdetails();
 
-        # api_url = loadapi['recommendationServiceUrl']
-        # products = {"product_id": 202212001}
-        # response = requests.post(api_url, json=products)
-        # print(response.json())
-        # prod_json = response.json()
-        prod_json = {"Product_ids": [202228337, 2, 3, 4, 5]}
+        api_url = loadapi['recommendationServiceUrl']
+        products = {"product_id": 202212001}
+        response = requests.post(api_url, json=products)
+        print(response.json())
+        prod_json = response.json()
+        # prod_json = {"Product_ids": [202228337, 2, 3, 4, 5]}
         # print(response.json())
         list = []
         for i in range(0, len(prod_json['Product_ids'])):
