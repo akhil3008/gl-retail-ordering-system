@@ -1,8 +1,8 @@
 function searchValidate() {
-    if (/^[a-zA-Z0-9]{3,}$/.test(document.getElementById("city_autocomplete").value)){
+    if (/^[a-zA-Z0-9]{0,}$/.test(document.getElementById("city_autocomplete").value)){
         return true;
     } else {
-        alert("Product name must be minimum 3 characters without any special characters");
+        alert("Product name should not have any special characters");
         document.getElementById("city_autocomplete").focus();
         return false;
     }

@@ -156,7 +156,7 @@ def index():
             recommendedProducts = getRecommendedProducts(list)
             recommendedProductsMassagedDetails = massageItemData(recommendedProducts)
             return render_template("ProductSearch.html", itemData=productDetailsByProductId, loggedIn=loggedIn,
-                                   firstName=firstName, productCountinKartForGivenUser=noOfItems,
+                                   firstName=firstName, productCountinKartForGivenUser=productCountinKartForGivenUser,
                                    recommendedProducts=recommendedProductsMassagedDetails)
 
 
