@@ -13,10 +13,10 @@ function registerValidate() {
 }
 
 function validatePassword() {
-    if (/^[a-zA-Z0-9]{8,}$/.test(document.getElementById("password").value)){
+    if (/^[a-zA-Z0-9]{8,15}$/.test(document.getElementById("password").value)){
         return validatePasswords()
     } else {
-        alert("Password must be minimum 8 characters");
+        alert("Password must be between 8 and 15 characters");
         document.getElementById("password").focus();
         return false;
     }

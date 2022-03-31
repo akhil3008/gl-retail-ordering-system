@@ -454,6 +454,11 @@ def profile():
     loggedIn, firstName, productCountinKartForGivenUser = getLoginUserDetails()
     return render_template('404.html', loggedIn=loggedIn, firstName=firstName)
 
+@app.route("/forgotPassword", methods=['GET', 'POST'])
+def forgotPassword():
+    loggedIn, firstName, productCountinKartForGivenUser = getLoginUserDetails()
+    return render_template('404.html', loggedIn=loggedIn, firstName=firstName)
+
 
 @app.route("/seeTrends", methods=['GET', 'POST'])
 def seeTrends():
