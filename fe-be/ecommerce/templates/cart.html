@@ -1,11 +1,12 @@
 {% extends "header.html"  %}
 {% block content %}
 <!-- Title Page -->
+	{% if totalsum > 0.00 %}
 	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" >
 
 		<h2 align="left" style="display: block; color: black; font-size: 2em; font-family: Montserrat-Regular;"><span> Cart </span> </h2>
 	</section>
-	{% if totalsum > 0.00 %}
+
 	<!-- Cart -->
 	<section class="cart bgwhite p-t-70 p-b-100">
 		<div class="container">
@@ -80,7 +81,7 @@
 				</div>
                 {% else %}
 
-                    <p>Please add products to the cart.</p>
+                    <p>Dear user, your cart is empty. You may choose from the below recommended items.</p>
 
                     {% endif %}
 			</div>

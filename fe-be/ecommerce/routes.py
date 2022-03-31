@@ -55,7 +55,9 @@ def register():
         # Parse form data
         msg = extractAndPersistUserDataFromForm(request)
         if msg:
-            return render_template('index.html', error=msg)
+            # return render_template('index.html', error=msg)
+            flash('Registered Successfully', 'success')
+            return redirect(url_for('root'))
         else:
             return render_template('index.html', error="Registration failed")
 
