@@ -1,5 +1,5 @@
 function searchValidate() {
-    if (/^[a-zA-Z0-9\s]{0,}$/.test(document.getElementById("city_autocomplete").value)){
+    if (/^.{0,}$/.test(document.getElementById("city_autocomplete").value)){
         return true;
     } else {
         alert("Product name should not have any special characters");

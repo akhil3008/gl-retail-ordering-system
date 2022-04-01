@@ -41,6 +41,7 @@ def login():
 @app.route("/logout")
 def logout():
     session.pop('email', None)
+    session.pop('firstname', None)
     return redirect(url_for('root'))
 
 
@@ -66,6 +67,7 @@ def register():
 @app.route("/home", methods=['GET'])
 def root():
     loggedIn, firstName, productCountinKartForGivenUser = getLoginUserDetails()
+    session['firstname'] = firstName
     allProductDetails = getAllProducts()
     allProductsMassagedDetails = massageItemData(allProductDetails)
     categoryData = getCategoryDetails()
@@ -176,7 +178,7 @@ def addToCart():
         flash('Item successfully added to cart !!', 'success')
         return redirect(url_for('root'))
     else:
-        # flash('please log in !!', 'success')
+        flash('please log in !!', 'success')
         return redirect(url_for('root'))
 
 
@@ -185,13 +187,14 @@ def addToCartProduct():
     if isUserLoggedIn():
         productId = request.args.get('productId')
         subProductId = request.args.get('subProductId')
+        print(session)
         extractAndPersistKartDetails(productId, subProductId)
         # Using Flask-SQLAlchmy normal query
         # extractAndPersistKartDetailsUsingkwargs(productId)
         flash('Item successfully added to cart !!', 'success')
         return redirect(url_for('root'))
     else:
-        # flash('please log in !!', 'success')
+        flash('please log in !!', 'success')
         return redirect(url_for('root'))
 
 
