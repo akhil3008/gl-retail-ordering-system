@@ -13,14 +13,16 @@ function registerValidate() {
 }
 
 function validatePassword() {
-    if (/^[a-zA-Z0-9]{8,15}$/.test(document.getElementById("password").value)){
+    if (/^[.\S/g]{8,15}$/.test(document.getElementById("password").value)){
         return validatePasswords()
     } else {
-        alert("Password must be between 8 and 15 characters");
+        alert("Password must be between 8 and 15 characters without spaces");
         document.getElementById("password").focus();
         return false;
     }
 }
+
+
 
 function validatePasswords() {
     var pass = document.getElementById("password").value;
